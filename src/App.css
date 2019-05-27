@@ -54,6 +54,17 @@ body{
   outline: 3px solid black;
   display: inline-block;
 }
+.acorn{
+  background-image: url('img/food.png');
+  
+}
+.head{
+ background-image: url('img/zoo.png');
+}
+.bodyChipmunk{
+  background-color: blueviolet;
+}
+
 
 @keyframes App-logo-spin {
   from {
