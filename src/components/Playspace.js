@@ -86,7 +86,7 @@ class Playspace extends React.Component {
                        ${
                            this.showChipmunkHead(cell)
                         ? 'head': this.showAcorn(cell)
-                        ? 'bodyChipmunk':this.showChipmunkBody(cell)
+                        ? 'acorn':this.showChipmunkBody(cell)
                         ? 'bodyChipmunk':''
                         }`
                     } ></div>
