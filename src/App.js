@@ -1,5 +1,6 @@
 import React  from 'react';
 import './App.css';
+import Scoreboard from './components/Scoreboard';
 
 class App extends React.Component {
  
@@ -53,6 +54,7 @@ class App extends React.Component {
         },1000)
     }
  
+    
     
     //creando el cuerpo de la ardilla
 
@@ -188,6 +190,7 @@ collidesWithAcorn = () => {
           } 
         }
 
+        
 
     render(){
         const {grid,chipmunk,gameOver}=this.state
@@ -195,7 +198,15 @@ collidesWithAcorn = () => {
         return(
         <div className="App">
           {
-            (gameOver)?console.log(`perdiste : ${chipmunk.chipmunkBody.length-2}`):
+            (gameOver)?
+            <div className="mt-5" >
+              <button type = 'button ' className="buttonSize" onClick={()=>window.location.reload()}>
+                <i className="fas fa-sync"></i>
+              </button>
+              <p>volver a jugar</p>
+            </div>
+              
+            :
             <div onKeyPress={this.setVelocity} className="grid" >
             {
              
@@ -213,10 +224,10 @@ collidesWithAcorn = () => {
                 )
          
             }
-      
+          <Scoreboard/>
           </div>
+          
           }
-
         </div>
         )
     }
