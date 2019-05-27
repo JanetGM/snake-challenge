@@ -40,7 +40,7 @@
 .grid{
   margin-top:60px;
   align-content: center;
-  width: 640px;
+  width: 528px;
   height: 480px;
 
 }
@@ -49,8 +49,8 @@ body{
   height: 100vh;
 }
 .cell{
-  width: 40px;
-  height: 40px;
+  width: 33px;
+  height: 33px;
   outline: 3px solid black;
   display: inline-block;
 }
@@ -62,7 +62,9 @@ body{
  background-image: url('img/zoo.png');
 }
 .bodyChipmunk{
-  background-color: blueviolet;
+  background-color: #9F7267;
+  border-radius: 20px;
+
 }
 
 

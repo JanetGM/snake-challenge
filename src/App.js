@@ -1,4 +1,4 @@
-import React , {Component} from 'react';
+import React  from 'react';
 import './App.css';
 
 class App extends React.Component {
@@ -195,9 +195,10 @@ collidesWithAcorn = () => {
         return(
         <div className="App">
           {
-            (gameOver)?console.log('perdiste'):
+            (gameOver)?console.log(`perdiste : ${chipmunk.chipmunkBody.length-2}`):
             <div onKeyPress={this.setVelocity} className="grid" >
             {
+             
                 grid.map((row,i)=>
                 row.map(cell => (
                     <div key={`${cell.row} ${cell.col}`}className={`cell
@@ -210,8 +211,9 @@ collidesWithAcorn = () => {
                   } ></div>
                 ))
                 )
+         
             }
-
+      
           </div>
           }
 
