@@ -38,9 +38,9 @@ class App extends React.Component {
               x:1,
               y:0
           },
-          points:[0]
   
         },
+        score:[]
        
     }
 }
@@ -96,9 +96,11 @@ class App extends React.Component {
     }
 
     handleClick = () =>{
-      const {chipmunk}=this.state;
-       this.setState({
-          chipmunk:{
+      
+       this.setState(({chipmunk,score}) => {
+        
+         const newState = {
+            chipmunk:{
             chipmunkHead:{
               row:1,
               col:1
@@ -108,21 +110,23 @@ class App extends React.Component {
                 x:1,
                 y:0
             },
-            points:[chipmunk.chipmunkBody.length-2]
-          
           },
+          score:[...score,chipmunk.chipmunkBody.length-2],
           acorn:{
               row:Math.floor(Math.random()*16),
               col:Math.floor(Math.random()*16),
           },
           gameOver:false,
+          
           }
-         
-      )
-
+          return newState;
+        }
+        
+      );
       setTimeout(() => {
         this.moveChipmunk()
       },500)
+        
     }
 
 
@@ -172,8 +176,12 @@ collidesWithAcorn = () => {
         ||chipmunk.chipmunkHead.row<0)
       return true;  
     }
+
   
+     
+     
   
+
     setVelocity = (event) => {
 
         if(event.keyCode===40)
@@ -227,15 +235,14 @@ collidesWithAcorn = () => {
 
      
     render(){
-        const {grid,gameOver,chipmunk}=this.state
-     
+        const {grid,gameOver,score}=this.state;
         return(
         <div className="App">
          <div className="container-fluid">
            {
              <div className="row">
                 <div className="col-4">
-                  <Scoreboard size={chipmunk.points}/>
+                  <Scoreboard size={score}/>
                 </div>
                 <div className="col-6">
                  <div onKeyPress={this.setVelocity} className="grid" >

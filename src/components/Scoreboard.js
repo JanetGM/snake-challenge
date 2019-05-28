@@ -5,8 +5,15 @@ const Scoreboard = ({size}) =>{
     return(
         
         <div className=" container-flex mt-5 border ">
-            <p className="h1">SCORE BOARD </p>
-          {console.log(size)}
+            <p className="h1 text-center">SCORE BOARD </p>
+            { 
+    
+                size.map((score,i) => (
+                   <p key={i}>Partida{i+1 }:{score}</p>
+                ))
+                
+                
+         }
         </div>
     )
 }
