@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.edc71575.chunk.css",
-    "main.js": "/static/js/main.cae6b271.chunk.js",
-    "main.js.map": "/static/js/main.cae6b271.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.09aed800.chunk.js": "/static/js/2.09aed800.chunk.js",
-    "static/js/2.09aed800.chunk.js.map": "/static/js/2.09aed800.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.52d5a3a4e32d49e3ae31e8fa19d2ed3a.js": "/precache-manifest.52d5a3a4e32d49e3ae31e8fa19d2ed3a.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.edc71575.chunk.css.map": "/static/css/main.edc71575.chunk.css.map"
+    "main.css": "/snake-challenge/static/css/main.edc71575.chunk.css",
+    "main.js": "/snake-challenge/static/js/main.4c31a39f.chunk.js",
+    "main.js.map": "/snake-challenge/static/js/main.4c31a39f.chunk.js.map",
+    "runtime~main.js": "/snake-challenge/static/js/runtime~main.187e375f.js",
+    "runtime~main.js.map": "/snake-challenge/static/js/runtime~main.187e375f.js.map",
+    "static/js/2.09aed800.chunk.js": "/snake-challenge/static/js/2.09aed800.chunk.js",
+    "static/js/2.09aed800.chunk.js.map": "/snake-challenge/static/js/2.09aed800.chunk.js.map",
+    "index.html": "/snake-challenge/index.html",
+    "precache-manifest.7759cb4906d69c2ad054fe0d0310c851.js": "/snake-challenge/precache-manifest.7759cb4906d69c2ad054fe0d0310c851.js",
+    "service-worker.js": "/snake-challenge/service-worker.js",
+    "static/css/main.edc71575.chunk.css.map": "/snake-challenge/static/css/main.edc71575.chunk.css.map"
   }
 }
