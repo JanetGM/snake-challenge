@@ -51,10 +51,9 @@ class App extends React.Component {
         });
         setTimeout(()=>{
             this.moveChipmunk()
-        },1000)
+        },500)
     }
  
-    
     
     //creando el cuerpo de la ardilla
 
@@ -71,10 +70,12 @@ class App extends React.Component {
     //mostrar acorn
 
     showAcorn = (cell) =>{
+
       const {acorn}=this.state;
       return (acorn.row === cell.row && acorn.col === cell.col);
     }
 
+    //obtener aleatoriamente las bellotas
     getRandomAcorn = () =>{
         const {chipmunk}=this.state;
         const newAcorn = {
@@ -90,9 +91,40 @@ class App extends React.Component {
           }
 
     }
-    //creando función que mueve  a la ardilla
-    moveChipmunk = () =>{
+
       
+
+
+    handleClick = () =>{
+       this.setState({
+          chipmunk:{
+            chipmunkHead:{
+              row:1,
+              col:1
+            },
+            chipmunkBody:[{row:1,col:3},{row:1,col:2}],
+            velocity :{
+                x:1,
+                y:0
+            }
+          
+          },
+          acorn:{
+              row:Math.floor(Math.random()*16),
+              col:Math.floor(Math.random()*16),
+          },
+          gameOver:false
+          }
+      )
+
+      setTimeout(() => {
+        this.moveChipmunk()
+      },500)
+    }
+
+
+    //creando función que mueve  a la ardilla
+  moveChipmunk = () =>{
     if(this.state.gameOver)return;
    
     this.setState(({chipmunk,acorn})=>{
@@ -120,7 +152,7 @@ class App extends React.Component {
      }
      setTimeout(() => {
       this.moveChipmunk()
-    },1000)
+    },500)
   });
 }
 collidesWithAcorn = () => {
@@ -131,9 +163,9 @@ collidesWithAcorn = () => {
   
   isOffEdge = () => {
       const {chipmunk} = this.state
-      if(chipmunk.chipmunkHead.col>15
-        ||chipmunk.chipmunkHead.co<0
-        ||chipmunk.chipmunkHead.row>15
+      if(chipmunk.chipmunkHead.col>16
+        ||chipmunk.chipmunkHead.col<0
+        ||chipmunk.chipmunkHead.row>16
         ||chipmunk.chipmunkHead.row<0)
       return true;  
     }
@@ -193,44 +225,53 @@ collidesWithAcorn = () => {
         
 
     render(){
-        const {grid,chipmunk,gameOver}=this.state
+        const {grid,gameOver}=this.state
      
         return(
         <div className="App">
-          {
-            (gameOver)?
-            <div className="mt-5" >
-              <button type = 'button ' className="buttonSize" onClick={()=>window.location.reload()}>
-                <i className="fas fa-sync"></i>
-              </button>
-              <p>volver a jugar</p>
+         <div className="container-fluid">
+           {
+             <div className="row">
+                <div className="col-4">
+                  <Scoreboard size={this.state.chipmunk.chipmunkBody.length-2}/>
+                </div>
+                <div className="col-6">
+                 <div onKeyPress={this.setVelocity} className="grid" >
+                  {
+                      grid.map((row,i)=>
+                      row.map(cell => (
+                          <div key={`${cell.row} ${cell.col}`}className={`cell 
+                          ${
+                              this.showChipmunkHead(cell)
+                            ? 'head': this.showAcorn(cell)
+                            ? 'acorn':this.showChipmunkBody(cell)
+                            ? 'bodyChipmunk':''
+                            }`
+                        } >
+                        </div>
+                      ))
+                    )
+                  }
+                  </div>       
+              </div>
+              <div className="col-2 mt-5">
+                  {(gameOver)
+                    ? 
+                    <div>
+                    <button type = 'button' className="buttonSize" onClick={this.handleClick.bind(this)}>
+                      <i className="fas fa-sync"></i>
+                    </button>
+                    <p>volver a jugar</p>
+                 </div>
+                    :''} 
+                </div>    
             </div>
-              
-            :
-            <div onKeyPress={this.setVelocity} className="grid" >
-            {
-             
-                grid.map((row,i)=>
-                row.map(cell => (
-                    <div key={`${cell.row} ${cell.col}`}className={`cell
-                     ${
-                         this.showChipmunkHead(cell)
-                      ? 'head': this.showAcorn(cell)
-                      ? 'acorn':this.showChipmunkBody(cell)
-                      ? 'bodyChipmunk':''
-                      }`
-                  } ></div>
-                ))
-                )
-         
-            }
-          <Scoreboard/>
+           }
           </div>
-          
-          }
         </div>
         )
     }
   
 }
 export default App;
+
