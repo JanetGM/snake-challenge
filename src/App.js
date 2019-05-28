@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import './App.css';
 import Scoreboard from './components/Scoreboard';
 
@@ -37,12 +37,15 @@ class App extends React.Component {
           velocity :{
               x:1,
               y:0
-          }
+          },
+          points:[0]
   
-        }
+        },
+       
     }
 }
 
+    
     //evento para mover a la ardilla cada segundo
 
     componentDidMount = () => {
@@ -92,10 +95,8 @@ class App extends React.Component {
 
     }
 
-      
-
-
     handleClick = () =>{
+      const {chipmunk}=this.state;
        this.setState({
           chipmunk:{
             chipmunkHead:{
@@ -106,15 +107,17 @@ class App extends React.Component {
             velocity :{
                 x:1,
                 y:0
-            }
+            },
+            points:[chipmunk.chipmunkBody.length-2]
           
           },
           acorn:{
               row:Math.floor(Math.random()*16),
               col:Math.floor(Math.random()*16),
           },
-          gameOver:false
+          gameOver:false,
           }
+         
       )
 
       setTimeout(() => {
@@ -136,8 +139,8 @@ class App extends React.Component {
         row:chipmunk.chipmunkHead.row + chipmunk.velocity.y,
         col: chipmunk.chipmunkHead.col + chipmunk.velocity.x
        },
-       chipmunkBody:[chipmunk.chipmunkHead, ...chipmunk.chipmunkBody]
-       },
+       chipmunkBody:[chipmunk.chipmunkHead, ...chipmunk.chipmunkBody],
+       }, 
        acorn:collidesWithAcorn? this.getRandomAcorn():acorn
      };
      
@@ -222,10 +225,9 @@ collidesWithAcorn = () => {
           } 
         }
 
-        
-
+     
     render(){
-        const {grid,gameOver}=this.state
+        const {grid,gameOver,chipmunk}=this.state
      
         return(
         <div className="App">
@@ -233,7 +235,7 @@ collidesWithAcorn = () => {
            {
              <div className="row">
                 <div className="col-4">
-                  <Scoreboard size={this.state.chipmunk.chipmunkBody.length-2}/>
+                  <Scoreboard size={chipmunk.points}/>
                 </div>
                 <div className="col-6">
                  <div onKeyPress={this.setVelocity} className="grid" >
