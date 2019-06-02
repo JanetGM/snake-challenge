@@ -159,7 +159,7 @@ class App extends React.Component {
      }
      setTimeout(() => {
       this.moveChipmunk()
-    },500)
+    },100)
   });
 }
 collidesWithAcorn = () => {
